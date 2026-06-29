@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEMsoar | Real-World Interactive Learning Platform</title>
+    <title>STEMsoar | Online Lesson Portal</title>
     <style>
         :root {
-            --bg-dark: #070a13;
-            --bg-card: #111a2e;
+            --bg-dark: #0a0f1d;
+            --bg-card: #151f38;
             --primary: #38bdf8;
             --primary-hover: #0ea5e9;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --border: #1e293b;
+            --border: #243454;
             --success: #10b981;
             --error: #ef4444;
         }
@@ -32,7 +32,7 @@
         }
 
         header {
-            background-color: rgba(7, 10, 19, 0.85);
+            background-color: rgba(10, 15, 29, 0.9);
             backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
@@ -41,10 +41,10 @@
         }
 
         .nav-container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 1.2rem 2rem;
         }
@@ -61,119 +61,10 @@
             color: var(--primary);
         }
 
-        .hero {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 4rem 2rem 2rem;
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            color: var(--text-muted);
-            font-size: 1.15rem;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
         .main-container {
-            max-width: 1200px;
+            max-width: 900px;
             margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            font-size: 1.6rem;
-            margin-bottom: 1.5rem;
-            font-weight: 700;
-        }
-
-        .courses-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .course-card {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
             padding: 2rem;
-            transition: all 0.25s ease;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .course-card:hover {
-            transform: translateY(-4px);
-            border-color: #334155;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        }
-
-        .course-badge {
-            background: rgba(56, 189, 248, 0.08);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            align-self: flex-start;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            border: 1px solid rgba(56, 189, 248, 0.15);
-        }
-
-        .course-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .course-card p {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 1.5rem;
-            flex-grow: 1;
-        }
-
-        .btn {
-            background-color: var(--primary);
-            color: #040711;
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-main);
-            border: 1px solid #334155;
-        }
-
-        .btn-secondary:hover {
-            background-color: #1e293b;
         }
 
         .workspace-container {
@@ -181,80 +72,96 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2.5rem;
-            margin-top: 1rem;
-            display: none;
         }
 
         .workspace-header {
             border-bottom: 1px solid var(--border);
             padding-bottom: 1.2rem;
             margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
         }
 
-        .lesson-text {
-            font-size: 1.05rem;
+        .workspace-header h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text-main);
+        }
+
+        .lesson-paragraphs p {
+            font-size: 1.1rem;
             color: #e2e8f0;
-            margin-bottom: 2rem;
-            background: #0b111e;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: justify;
         }
 
-        .interactive-quiz {
-            background: #0d1524;
+        .quiz-box {
+            background: #0d162a;
             border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 1.5rem;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2.5rem;
+        }
+
+        .quiz-title {
+            font-size: 1.4rem;
             margin-bottom: 1.5rem;
+            color: var(--primary);
+            font-weight: 700;
+        }
+
+        .question-block {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(36, 52, 84, 0.4);
+            padding-bottom: 1.5rem;
+        }
+
+        .question-block:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
         }
 
         .quiz-question {
             font-weight: 600;
+            font-size: 1.1rem;
             margin-bottom: 1rem;
-            color: var(--text-main);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.6rem;
         }
 
         .quiz-option {
-            display: block;
-            background: var(--bg-card);
-            border: 1px solid #1e293b;
-            padding: 1rem;
+            background: #151f38;
+            border: 1px solid var(--border);
+            padding: 0.9rem 1.2rem;
             border-radius: 8px;
-            margin-top: 0.6rem;
             cursor: pointer;
             transition: all 0.2s ease;
         }
 
         .quiz-option:hover {
             border-color: #475569;
-            background: #18233c;
+            background: #1c2b4e;
         }
 
         .quiz-option.correct {
-            border-color: var(--success);
-            background: rgba(16, 185, 129, 0.08);
+            border-color: var(--success) !important;
+            background: rgba(16, 185, 129, 0.1) !important;
             color: #34d399;
+            font-weight: 600;
         }
 
         .quiz-option.wrong {
-            border-color: var(--error);
-            background: rgba(239, 68, 68, 0.08);
+            border-color: var(--error) !important;
+            background: rgba(239, 68, 68, 0.1) !important;
             color: #f87171;
         }
 
-        .feedback {
-            margin-top: 1rem;
+        .feedback-msg {
+            margin-top: 0.8rem;
+            font-size: 0.95rem;
             font-weight: 500;
-            padding: 0.75rem 1rem;
-            border-radius: 6px;
-            display: none;
-        }
-
-        .hidden {
             display: none;
         }
     </style>
@@ -263,264 +170,155 @@
 
     <header>
         <div class="nav-container">
-            <a href="#" class="logo" onclick="showDashboard()">STEM<span>soar</span></a>
-            <button class="btn btn-secondary" onclick="showDashboard()">All Courses</button>
+            <div class="logo">STEM<span>soar Portal</span></div>
         </div>
     </header>
 
-    <section class="hero" id="hero-section">
-        <h1>STEMsoar Learning Portal</h1>
-        <p>Interactive curriculum directly rendered from your official course textbooks and lesson pathways.</p>
-    </section>
-
     <main class="main-container">
-        <div id="dashboard">
-            <h2 class="section-title">Available Courses</h2>
-            <div class="courses-grid">
-                <div class="course-card" onclick="openCourse('cell-science')">
-                    <div>
-                        <span class="course-badge">Course 1</span>
-                        <h3>Cell Science (10+)</h3>
-                        <p>Explore Cell Theory, cellular building blocks, and individual organelles.</p>
-                    </div>
-                    <button class="btn">View Lessons</button>
-                </div>
-
-                <div class="course-card" onclick="openCourse('chemical-science')">
-                    <div>
-                        <span class="course-badge">Course 2</span>
-                        <h3>Chemical Science</h3>
-                        <p>Study the Periodic Table structure and covalent, ionic, or metallic chemical bonds.</p>
-                    </div>
-                    <button class="btn">View Lessons</button>
-                </div>
-
-                <div class="course-card" onclick="openCourse('technology')">
-                    <div>
-                        <span class="course-badge">Course 3</span>
-                        <h3>Technology (8+)</h3>
-                        <p>Introduction to sequences, block coding principles, variables, and written Python functions.</p>
-                    </div>
-                    <button class="btn">View Lessons</button>
-                </div>
-
-                <div class="course-card" onclick="openCourse('engineering')">
-                    <div>
-                        <span class="course-badge">Course 4</span>
-                        <h3>Engineering &amp; Simple Machines</h3>
-                        <p>Master physical mechanisms including wheels, axles, levers, and the design process workflow.</p>
-                    </div>
-                    <button class="btn">View Lessons</button>
-                </div>
-
-                <div class="course-card" onclick="openCourse('mathematics')">
-                    <div>
-                        <span class="course-badge">Course 5</span>
-                        <h3>Mathematics (Grade 5)</h3>
-                        <p>Deconstruct structural arithmetic logic, operational order hierarchies, and place value spaces.</p>
-                    </div>
-                    <button class="btn">View Lessons</button>
-                </div>
-            </div>
-        </div>
-
-        <div id="course-track" class="hidden">
-            <h2 class="section-title" id="course-track-title">Lessons Matrix</h2>
-            <div class="courses-grid" id="lessons-grid-box"></div>
-        </div>
-
-        <div id="lesson-workspace" class="workspace-container">
+        <div class="workspace-container">
             <div class="workspace-header">
-                <h2 id="lesson-title">Module Title</h2>
-                <button class="btn btn-secondary" onclick="backToTrack()">Back to Lessons</button>
+                <h2 id="module-title">Lesson 5: Introduction to Conditionals</h2>
             </div>
             
-            <div id="lesson-text-box" class="lesson-text"></div>
-            <div id="quiz-container"></div>
+            <div id="module-paragraphs" class="lesson-paragraphs">
+                <p>Now that we understand variables and how they store information, we are ready to learn a new concept, conditionals! Conditionals help computers decide what to do. Just like you make choices every day, computers do too, but they need clear rules to follow.</p>
+                <p>A conditional is like saying “If this happens, then do that.” For example, imagine you are outside and you feel raindrops. You might think: If it is snowing, then put on a jacket. You made a decision based on a condition!</p>
+                <p>Computers do the same thing, but they use code. In coding, a conditional might look like this: if score > 20: say “Nice!” This means: If the score is greater than 20, then the computer should say “Nice!” If the condition is not true, the computer will not do that action. So if the score is 19 it will not say “Nice!”.</p>
+                <p>Sometimes we also use the word else to tell the computer what to do if the condition is not met. For example: if it is raining: take an umbrella else: wear sunglasses. Conditionals help programs react dynamically to circumstances, whether in games, apps, or complex software architectures.</p>
+            </div>
+            
+            <div class="quiz-box">
+                <div class="quiz-title">Knowledge Review Framework</div>
+                <div id="questions-wrapper">
+                    <div class="question-block" id="block-q-0">
+                        <div class="quiz-question">1. What do conditionals help computers do?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 0, 1)">A. Draw pictures</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 1, 1)">B. Make decisions</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 2, 1)">C. Go to sleep</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 3, 1)">D. Make music</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-0"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-1">
+                        <div class="quiz-question">2. A conditional is like saying:</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 0, 1)">A. “Do everything at once.”</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 1, 1)">B. “If this happens, then do that.”</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 2, 1)">C. “Never change anything.”</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 3, 1)">D. “Always repeat forever.”</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-1"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-2">
+                        <div class="quiz-question">3. True or False: You make decisions every day, just like computers do.</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 2, 0, 0)">A. True</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 2, 1, 0)">B. False</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-2"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-3">
+                        <div class="quiz-question">4. Which is an example of a conditional in real life?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 0, 0)">A. If it’s raining, take an umbrella</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 1, 0)">B. Eat lunch</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 2, 0)">C. Jump up and down</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 3, 0)">D. Say hello</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-3"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-4">
+                        <div class="quiz-question">5. In the code if score > 30: say “Fabulous!”, what must be true for the computer to say “Fabulous!”?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 0, 2)">A. Score is less than 10</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 1, 2)">B. Score is exactly 30</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 2, 2)">C. Score is greater than 30</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 3, 2)">D. Score is 30</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-4"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-5">
+                        <div class="quiz-question">6. If the score is 19 in the example context, what happens?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 0, 1)">A. The computer says “Nice!”</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 1, 1)">B. The computer says nothing</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 2, 1)">C. The computer shuts down</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 3, 1)">D. The score resets</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-5"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-6">
+                        <div class="quiz-question">7. The word else tells the computer:</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 0, 0)">A. What to do if the condition is not true</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 1, 0)">B. To restart the program</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 2, 0)">C. To change screen alignments</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 3, 0)">D. To erase code assets</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-6"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-7">
+                        <div class="quiz-question">8. Based on the statement 'if it is raining: take an umbrella Else: wear sunglasses', what happens if it is not raining?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 0, 1)">A. Take an umbrella</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 1, 1)">B. Wear sunglasses</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 2, 1)">C. Stand still</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 3, 1)">D. Go inside</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-7"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-8">
+                        <div class="quiz-question">9. Where are conditionals used?</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 0, 2)">A. Only in video games</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 1, 2)">B. Only in robots</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 2, 2)">C. In games, robots, and apps</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 3, 2)">D. Nowhere</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-8"></div>
+                    </div>
+
+                    <div class="question-block" id="block-q-9">
+                        <div class="quiz-question">10. Conditionals decide an output based on the ________.</div>
+                        <div class="quiz-options">
+                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 0, 1)">A. Time</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 1, 1)">B. Circumstance</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 2, 1)">C. Color</div>
+                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 3, 1)">D. Shape</div>
+                        </div>
+                        <div class="feedback-msg" id="feed-q-9"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
 
     <script>
-        const appDataset = {
-            'cell-science': {
-                title: 'Cell Science',
-                lessons: [
-                    {
-                        id: 'cell-1',
-                        title: 'Lesson 1: Cell Theory',
-                        text: 'The Cell Theory is a big idea in science that explains what living things are made of. Scientists discovered that all living things are made of tiny building blocks called cells. Cells are so small that most of them can only be seen with a microscope. Plants, animals, and even people are all made of cells.',
-                        question: 'What are the tiny building blocks that make up all living things?',
-                        options: ['A. Organs', 'B. Cells', 'C. Tissues', 'D. Bones'],
-                        correctIndex: 1
-                    },
-                    {
-                        id: 'cell-2',
-                        title: 'Lesson 2: Organelles',
-                        text: 'Cells are the basic building blocks of life, but inside each cell are even smaller parts called organelles. Organelles are like tiny machines that help the cell do its job. One important organelle is the nucleus, which acts as the cell\'s control center.',
-                        question: 'Which organelle acts as the cell\'s control center?',
-                        options: ['A. Chloroplast', 'B. Cell membrane', 'C. Nucleus', 'D. Cell wall'],
-                        correctIndex: 2
-                    }
-                ]
-            },
-            'chemical-science': {
-                title: 'Chemical Science',
-                lessons: [
-                    {
-                        id: 'chem-1',
-                        title: 'Lesson 1: The Periodic Table',
-                        text: 'The periodic table is a chart that organizes all known elements. An element is a pure substance made of only one type of atom. The rows are called periods, and the columns are called groups or families. Elements in the same group have similar properties because they have the same number of outer (valence) electrons.',
-                        question: 'Why do elements in the same group have similar properties?',
-                        options: ['A. They are the same size.', 'B. They have the same number of valence electrons.', 'C. They all have the same color.', 'D. They were discovered at the same time.'],
-                        correctIndex: 1
-                    }
-                ]
-            },
-            'technology': {
-                title: 'Technology & Coding',
-                lessons: [
-                    {
-                        id: 'tech-1',
-                        title: 'Lesson 1: Introduction to Coding',
-                        text: 'Coding is giving a robot instructions for it to follow. Block coding consists of prepared sets of code. When you structure the blocks correctly, the computer performs them in order. This is called a sequence.',
-                        question: 'What is it called when a computer performs blocks in order?',
-                        options: ['A. Sequence', 'B. Order', 'C. Method', 'D. Pathway'],
-                        correctIndex: 0
-                    },
-                    {
-                        id: 'tech-12',
-                        title: 'Lesson 12: Print Functions',
-                        text: 'Unlike block coding, where you might drag a "say" block, Python uses the word print to make the computer display something on the screen. The print function tells the computer, "Show this text to the user!"',
-                        question: 'Which of the following is the correct way to write a print statement?',
-                        options: ['A. say("Hello")', 'B. print["Hello"]', 'C. print("Hello")', 'D. show("Hello")'],
-                        correctIndex: 2
-                    }
-                ]
-            },
-            'engineering': {
-                title: 'Engineering & Simple Machines',
-                lessons: [
-                    {
-                        id: 'eng-8',
-                        title: 'Lesson 8: Wheels and Axles',
-                        text: 'A wheel and axle is made of a large wheel attached to a smaller rod called an axle. When the wheel turns, the axle turns too. Wheels and axles help people move things more easily.',
-                        question: 'What is a wheel and axle?',
-                        options: ['a) A rope and pulley', 'b) A sharp wedge', 'c) A large wheel attached to a smaller rod called an axle', 'd) A tilted ramp'],
-                        correctIndex: 2
-                    },
-                    {
-                        id: 'eng-9',
-                        title: 'Lesson 9: Levers',
-                        text: 'A lever is a stiff bar that moves around a fixed point called a fulcrum. Levers help people lift, move, or push objects with less effort.',
-                        question: 'What is a lever?',
-                        options: ['a) A wheel attached to an axle', 'b) A rope and pulley', 'c) A stiff bar that moves around a fixed point', 'd) A tilted ramp'],
-                        correctIndex: 2
-                    }
-                ]
-            },
-            'mathematics': {
-                title: 'Mathematics (Grade 5)',
-                lessons: [
-                    {
-                        id: 'math-1',
-                        title: 'Lesson 1: Place Value & Operations',
-                        text: 'Grade 5 Mathematics focuses extensively on base systems, the strict order of mathematical operations (PEMDAS), and spatial value alignment blocks across decimal tiers.',
-                        question: 'Which element establishes precedence first in the standard Order of Operations rule set?',
-                        options: ['A. Addition statements', 'B. Parentheses structures', 'C. Multiplication maps', 'D. Subtraction chains'],
-                        correctIndex: 1
-                    }
-                ]
-            }
-        };
-
-        let currentCourseId = '';
-
-        function openCourse(courseId) {
-            currentCourseId = courseId;
-            document.getElementById('dashboard').classList.add('hidden');
-            document.getElementById('hero-section').classList.add('hidden');
+        function verifyAnswer(element, qIdx, chosenIdx, correctIdx) {
+            const block = document.getElementById(`block-q-${qIdx}`);
+            const options = block.querySelectorAll('.quiz-option');
+            const feedback = document.getElementById(`feed-q-${qIdx}`);
             
-            const container = document.getElementById('course-track');
-            const title = document.getElementById('course-track-title');
-            const grid = document.getElementById('lessons-grid-box');
-            
-            const target = appDataset[courseId];
-            title.innerText = target.title;
-            grid.innerHTML = '';
-
-            target.lessons.forEach(l => {
-                grid.innerHTML += `
-                    <div class="course-card" onclick="loadLesson('${l.id}')">
-                        <div>
-                            <span class="course-badge">Interactive Lesson</span>
-                            <h3>${l.title}</h3>
-                            <p>Read content material and answer the lesson question dynamically.</p>
-                        </div>
-                        <button class="btn">Launch Lesson</button>
-                    </div>
-                `;
-            });
-            container.classList.remove('hidden');
-        }
-
-        function showDashboard() {
-            document.getElementById('dashboard').classList.remove('hidden');
-            document.getElementById('hero-section').classList.remove('hidden');
-            document.getElementById('course-track').classList.add('hidden');
-            document.getElementById('lesson-workspace').style.display = 'none';
-        }
-
-        function backToTrack() {
-            document.getElementById('lesson-workspace').style.display = 'none';
-            document.getElementById('course-track').classList.remove('hidden');
-        }
-
-        function loadLesson(lessonId) {
-            document.getElementById('course-track').classList.add('hidden');
-            const workspace = document.getElementById('lesson-workspace');
-            const title = document.getElementById('lesson-title');
-            const textBox = document.getElementById('lesson-text-box');
-            const quizContainer = document.getElementById('quiz-container');
-            
-            const course = appDataset[currentCourseId];
-            const lesson = course.lessons.find(l => l.id === lessonId);
-
-            title.innerText = lesson.title;
-            textBox.innerText = lesson.text;
-            
-            let optionsHTML = '';
-            lesson.options.forEach((opt, idx) => {
-                optionsHTML += `<div class="quiz-option" onclick="evaluateAnswer(this, ${idx}, ${lesson.correctIndex})">${opt}</div>`;
-            });
-
-            quizContainer.innerHTML = `
-                <div class="interactive-quiz">
-                    <div class="quiz-question">${lesson.question}</div>
-                    ${optionsHTML}
-                    <div class="feedback" id="quiz-feedback"></div>
-                </div>
-            `;
-
-            workspace.style.display = 'block';
-        }
-
-        function evaluateAnswer(element, chosenIdx, correctIdx) {
-            const parent = element.parentElement;
-            const options = parent.querySelectorAll('.quiz-option');
-            const feedback = parent.querySelector('#quiz-feedback');
-            
+            // Clear prior states inside this individual question block
             options.forEach(opt => opt.classList.remove('correct', 'wrong'));
 
             if (chosenIdx === correctIdx) {
                 element.classList.add('correct');
-                feedback.style.background = 'rgba(16, 185, 129, 0.1)';
                 feedback.style.color = '#34d399';
-                feedback.innerText = "Excellent! That is correct according to the lesson text.";
+                feedback.innerText = "✓ Correct according to the curriculum text source.";
             } else {
                 element.classList.add('wrong');
-                feedback.style.background = 'rgba(239, 68, 68, 0.1)';
                 feedback.style.color = '#f87171';
-                feedback.innerText = "Incorrect. Review the text box above and select a different option.";
+                feedback.innerText = "✗ Incorrect. Reread the lesson text boxes above and select a different answer.";
             }
             feedback.style.display = 'block';
         }
