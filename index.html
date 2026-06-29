@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEMsoar | Interactive Learning</title>
+    <title>STEMsoar | Real-World Interactive Learning Platform</title>
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --bg-card: #1e293b;
+            --bg-dark: #070a13;
+            --bg-card: #111a2e;
             --primary: #38bdf8;
             --primary-hover: #0ea5e9;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
-            --success: #34d399;
-            --error: #f87171;
+            --border: #1e293b;
+            --success: #10b981;
+            --error: #ef4444;
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
@@ -31,12 +32,12 @@
         }
 
         header {
-            background-color: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(10px);
+            background-color: rgba(7, 10, 19, 0.85);
+            backdrop-filter: blur(12px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid var(--border);
         }
 
         .nav-container {
@@ -45,15 +46,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1.2rem 2rem;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 800;
             color: var(--text-main);
             text-decoration: none;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
 
         .logo span {
@@ -63,7 +64,7 @@
         .hero {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 4rem 2rem;
+            padding: 4rem 2rem 2rem;
             text-align: center;
         }
 
@@ -71,16 +72,16 @@
             font-size: 3rem;
             font-weight: 800;
             margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, var(--primary));
+            background: linear-gradient(135deg, #ffffff 0%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero p {
             color: var(--text-muted);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             max-width: 600px;
-            margin: 0 auto 2rem;
+            margin: 0 auto;
         }
 
         .main-container {
@@ -90,37 +91,24 @@
         }
 
         .section-title {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            position: relative;
-            padding-left: 15px;
+            font-size: 1.6rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
         }
 
-        .section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 15%;
-            height: 70%;
-            width: 4px;
-            background-color: var(--primary);
-            border-radius: 2px;
-        }
-
-        /* Courses Grid */
         .courses-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .course-card {
             background-color: var(--bg-card);
-            border: 1px solid #334155;
+            border: 1px solid var(--border);
             border-radius: 12px;
             padding: 2rem;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: all 0.25s ease;
             cursor: pointer;
             display: flex;
             flex-direction: column;
@@ -129,43 +117,49 @@
 
         .course-card:hover {
             transform: translateY(-4px);
-            border-color: var(--primary);
+            border-color: #334155;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
         }
 
         .course-badge {
-            background: rgba(56, 189, 248, 0.1);
+            background: rgba(56, 189, 248, 0.08);
             color: var(--primary);
             padding: 0.25rem 0.75rem;
             border-radius: 20px;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             align-self: flex-start;
             margin-bottom: 1rem;
+            text-transform: uppercase;
+            border: 1px solid rgba(56, 189, 248, 0.15);
         }
 
         .course-card h3 {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 0.5rem;
         }
 
         .course-card p {
             color: var(--text-muted);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .btn {
             background-color: var(--primary);
-            color: #0f172a;
+            color: #040711;
             padding: 0.75rem 1.5rem;
             border: none;
             border-radius: 6px;
             font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: background-color 0.2s;
+            transition: all 0.2s;
             text-align: center;
-            text-decoration: none;
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .btn:hover {
@@ -175,87 +169,89 @@
         .btn-secondary {
             background-color: transparent;
             color: var(--text-main);
-            border: 1px solid #475569;
+            border: 1px solid #334155;
         }
 
         .btn-secondary:hover {
-            background-color: #334155;
+            background-color: #1e293b;
         }
 
-        /* Workspace / Interactive Lesson Area */
-        .lesson-container {
+        .workspace-container {
             background-color: var(--bg-card);
-            border: 1px solid #334155;
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2.5rem;
-            margin-top: 2rem;
+            margin-top: 1rem;
             display: none;
         }
 
-        .lesson-header {
-            border-bottom: 1px solid #334155;
-            padding-bottom: 1rem;
+        .workspace-header {
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.2rem;
             margin-bottom: 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .interactive-box {
-            background: #0f172a;
-            border: 1px solid #334155;
+        .lesson-text {
+            font-size: 1.05rem;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+            background: #0b111e;
+            padding: 1.5rem;
             border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .interactive-quiz {
+            background: #0d1524;
+            border: 1px solid var(--border);
+            border-radius: 10px;
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
 
+        .quiz-question {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
         .quiz-option {
             display: block;
-            background: #1e293b;
-            border: 1px solid #475569;
+            background: var(--bg-card);
+            border: 1px solid #1e293b;
             padding: 1rem;
             border-radius: 8px;
-            margin-top: 0.7rem;
+            margin-top: 0.6rem;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all 0.2s ease;
         }
 
         .quiz-option:hover {
-            border-color: var(--primary);
-            background: #273549;
+            border-color: #475569;
+            background: #18233c;
         }
 
         .quiz-option.correct {
             border-color: var(--success);
-            background: rgba(52, 211, 153, 0.1);
+            background: rgba(16, 185, 129, 0.08);
+            color: #34d399;
         }
 
         .quiz-option.wrong {
             border-color: var(--error);
-            background: rgba(248, 113, 113, 0.1);
+            background: rgba(239, 68, 68, 0.08);
+            color: #f87171;
         }
 
         .feedback {
             margin-top: 1rem;
-            font-weight: 600;
-            display: none;
-        }
-
-        .input-match {
-            background: #1e293b;
-            border: 1px solid #475569;
-            color: #fff;
-            padding: 0.75rem;
+            font-weight: 500;
+            padding: 0.75rem 1rem;
             border-radius: 6px;
-            font-size: 1rem;
-            width: 100%;
-            max-width: 300px;
-            margin-top: 0.5rem;
-        }
-
-        .input-match:focus {
-            outline: none;
-            border-color: var(--primary);
+            display: none;
         }
 
         .hidden {
@@ -268,107 +264,203 @@
     <header>
         <div class="nav-container">
             <a href="#" class="logo" onclick="showDashboard()">STEM<span>soar</span></a>
-            <button class="btn btn-secondary" onclick="showDashboard()">Dashboard</button>
+            <button class="btn btn-secondary" onclick="showDashboard()">All Courses</button>
         </div>
     </header>
 
     <section class="hero" id="hero-section">
-        <h1>Welcome to STEMsoar</h1>
-        <p>Dive into interactive, bite-sized STEM learning tracks designed to make complex concepts intuitive and fun.</p>
+        <h1>STEMsoar Learning Portal</h1>
+        <p>Interactive curriculum directly rendered from your official course textbooks and lesson pathways.</p>
     </section>
 
     <main class="main-container">
         <div id="dashboard">
             <h2 class="section-title">Available Courses</h2>
             <div class="courses-grid">
-                <div class="course-card" onclick="openCourse('math5')">
+                <div class="course-card" onclick="openCourse('cell-science')">
                     <div>
-                        <span class="course-badge">Grade 5</span>
-                        <h3>Mathematics</h3>
-                        <p>Master core elements including Order of Operations and Place Value with hands-on modules.</p>
+                        <span class="course-badge">Course 1</span>
+                        <h3>Cell Science (10+)</h3>
+                        <p>Explore Cell Theory, cellular building blocks, and individual organelles.</p>
                     </div>
-                    <button class="btn">Start Learning</button>
+                    <button class="btn">View Lessons</button>
                 </div>
 
-                <div class="course-card">
+                <div class="course-card" onclick="openCourse('chemical-science')">
                     <div>
-                        <span class="course-badge">Grade 5</span>
-                        <h3>Introduction to Robotics</h3>
-                        <p>Explore basic logic controls and mechanisms powering modern automation.</p>
+                        <span class="course-badge">Course 2</span>
+                        <h3>Chemical Science</h3>
+                        <p>Study the Periodic Table structure and covalent, ionic, or metallic chemical bonds.</p>
                     </div>
-                    <button class="btn btn-secondary">Coming Soon</button>
+                    <button class="btn">View Lessons</button>
                 </div>
 
-                <div class="course-card">
+                <div class="course-card" onclick="openCourse('technology')">
                     <div>
-                        <span class="course-badge">Grade 6</span>
-                        <h3>Earth Science</h3>
-                        <p>Uncover the dynamic systems shaping our planet's atmosphere and terrain.</p>
+                        <span class="course-badge">Course 3</span>
+                        <h3>Technology (8+)</h3>
+                        <p>Introduction to sequences, block coding principles, variables, and written Python functions.</p>
                     </div>
-                    <button class="btn btn-secondary">Coming Soon</button>
+                    <button class="btn">View Lessons</button>
                 </div>
 
-                <div class="course-card">
+                <div class="course-card" onclick="openCourse('engineering')">
                     <div>
-                        <span class="course-badge">Grade 6</span>
-                        <h3>Foundations of Coding</h3>
-                        <p>Build visual and logical scripts using beginner-friendly development sandboxes.</p>
+                        <span class="course-badge">Course 4</span>
+                        <h3>Engineering &amp; Simple Machines</h3>
+                        <p>Master physical mechanisms including wheels, axles, levers, and the design process workflow.</p>
                     </div>
-                    <button class="btn btn-secondary">Coming Soon</button>
+                    <button class="btn">View Lessons</button>
                 </div>
 
-                <div class="course-card">
+                <div class="course-card" onclick="openCourse('mathematics')">
                     <div>
-                        <span class="course-badge">Grade 7</span>
-                        <h3>Space Exploration</h3>
-                        <p>Journey through our solar system and look into the physics of interstellar travel.</p>
+                        <span class="course-badge">Course 5</span>
+                        <h3>Mathematics (Grade 5)</h3>
+                        <p>Deconstruct structural arithmetic logic, operational order hierarchies, and place value spaces.</p>
                     </div>
-                    <button class="btn btn-secondary">Coming Soon</button>
+                    <button class="btn">View Lessons</button>
                 </div>
             </div>
         </div>
 
         <div id="course-track" class="hidden">
-            <h2 class="section-title" id="course-track-title">Mathematics - Grade 5 Tracks</h2>
-            <div class="courses-grid">
-                <div class="course-card" onclick="loadLesson('operations')">
-                    <div>
-                        <span class="course-badge">Lesson 1</span>
-                        <h3>Order of Operations</h3>
-                        <p>Learn the proper rules to evaluate multi-step mathematical expressions effortlessly.</p>
-                    </div>
-                    <button class="btn">Launch Lesson</button>
-                </div>
-
-                <div class="course-card" onclick="loadLesson('placevalue')">
-                    <div>
-                        <span class="course-badge">Lesson 2</span>
-                        <h3>Place Value</h3>
-                        <p>Understand how positions change digits' values drastically from tenths to millions.</p>
-                    </div>
-                    <button class="btn">Launch Lesson</button>
-                </div>
-            </div>
+            <h2 class="section-title" id="course-track-title">Lessons Matrix</h2>
+            <div class="courses-grid" id="lessons-grid-box"></div>
         </div>
 
-        <div id="lesson-workspace" class="lesson-container">
-            <div class="lesson-header">
-                <h2 id="lesson-title">Lesson Title</h2>
-                <button class="btn btn-secondary" onclick="backToTrack()">Back to Track</button>
+        <div id="lesson-workspace" class="workspace-container">
+            <div class="workspace-header">
+                <h2 id="lesson-title">Module Title</h2>
+                <button class="btn btn-secondary" onclick="backToTrack()">Back to Lessons</button>
             </div>
             
-            <div id="lesson-content">
-                </div>
+            <div id="lesson-text-box" class="lesson-text"></div>
+            <div id="quiz-container"></div>
         </div>
     </main>
 
     <script>
-        function openCourse(courseId) {
-            if (courseId === 'math5') {
-                document.getElementById('dashboard').classList.add('hidden');
-                document.getElementById('hero-section').classList.add('hidden');
-                document.getElementById('course-track').classList.remove('hidden');
+        const appDataset = {
+            'cell-science': {
+                title: 'Cell Science',
+                lessons: [
+                    {
+                        id: 'cell-1',
+                        title: 'Lesson 1: Cell Theory',
+                        text: 'The Cell Theory is a big idea in science that explains what living things are made of. Scientists discovered that all living things are made of tiny building blocks called cells. Cells are so small that most of them can only be seen with a microscope. Plants, animals, and even people are all made of cells.',
+                        question: 'What are the tiny building blocks that make up all living things?',
+                        options: ['A. Organs', 'B. Cells', 'C. Tissues', 'D. Bones'],
+                        correctIndex: 1
+                    },
+                    {
+                        id: 'cell-2',
+                        title: 'Lesson 2: Organelles',
+                        text: 'Cells are the basic building blocks of life, but inside each cell are even smaller parts called organelles. Organelles are like tiny machines that help the cell do its job. One important organelle is the nucleus, which acts as the cell\'s control center.',
+                        question: 'Which organelle acts as the cell\'s control center?',
+                        options: ['A. Chloroplast', 'B. Cell membrane', 'C. Nucleus', 'D. Cell wall'],
+                        correctIndex: 2
+                    }
+                ]
+            },
+            'chemical-science': {
+                title: 'Chemical Science',
+                lessons: [
+                    {
+                        id: 'chem-1',
+                        title: 'Lesson 1: The Periodic Table',
+                        text: 'The periodic table is a chart that organizes all known elements. An element is a pure substance made of only one type of atom. The rows are called periods, and the columns are called groups or families. Elements in the same group have similar properties because they have the same number of outer (valence) electrons.',
+                        question: 'Why do elements in the same group have similar properties?',
+                        options: ['A. They are the same size.', 'B. They have the same number of valence electrons.', 'C. They all have the same color.', 'D. They were discovered at the same time.'],
+                        correctIndex: 1
+                    }
+                ]
+            },
+            'technology': {
+                title: 'Technology & Coding',
+                lessons: [
+                    {
+                        id: 'tech-1',
+                        title: 'Lesson 1: Introduction to Coding',
+                        text: 'Coding is giving a robot instructions for it to follow. Block coding consists of prepared sets of code. When you structure the blocks correctly, the computer performs them in order. This is called a sequence.',
+                        question: 'What is it called when a computer performs blocks in order?',
+                        options: ['A. Sequence', 'B. Order', 'C. Method', 'D. Pathway'],
+                        correctIndex: 0
+                    },
+                    {
+                        id: 'tech-12',
+                        title: 'Lesson 12: Print Functions',
+                        text: 'Unlike block coding, where you might drag a "say" block, Python uses the word print to make the computer display something on the screen. The print function tells the computer, "Show this text to the user!"',
+                        question: 'Which of the following is the correct way to write a print statement?',
+                        options: ['A. say("Hello")', 'B. print["Hello"]', 'C. print("Hello")', 'D. show("Hello")'],
+                        correctIndex: 2
+                    }
+                ]
+            },
+            'engineering': {
+                title: 'Engineering & Simple Machines',
+                lessons: [
+                    {
+                        id: 'eng-8',
+                        title: 'Lesson 8: Wheels and Axles',
+                        text: 'A wheel and axle is made of a large wheel attached to a smaller rod called an axle. When the wheel turns, the axle turns too. Wheels and axles help people move things more easily.',
+                        question: 'What is a wheel and axle?',
+                        options: ['a) A rope and pulley', 'b) A sharp wedge', 'c) A large wheel attached to a smaller rod called an axle', 'd) A tilted ramp'],
+                        correctIndex: 2
+                    },
+                    {
+                        id: 'eng-9',
+                        title: 'Lesson 9: Levers',
+                        text: 'A lever is a stiff bar that moves around a fixed point called a fulcrum. Levers help people lift, move, or push objects with less effort.',
+                        question: 'What is a lever?',
+                        options: ['a) A wheel attached to an axle', 'b) A rope and pulley', 'c) A stiff bar that moves around a fixed point', 'd) A tilted ramp'],
+                        correctIndex: 2
+                    }
+                ]
+            },
+            'mathematics': {
+                title: 'Mathematics (Grade 5)',
+                lessons: [
+                    {
+                        id: 'math-1',
+                        title: 'Lesson 1: Place Value & Operations',
+                        text: 'Grade 5 Mathematics focuses extensively on base systems, the strict order of mathematical operations (PEMDAS), and spatial value alignment blocks across decimal tiers.',
+                        question: 'Which element establishes precedence first in the standard Order of Operations rule set?',
+                        options: ['A. Addition statements', 'B. Parentheses structures', 'C. Multiplication maps', 'D. Subtraction chains'],
+                        correctIndex: 1
+                    }
+                ]
             }
+        };
+
+        let currentCourseId = '';
+
+        function openCourse(courseId) {
+            currentCourseId = courseId;
+            document.getElementById('dashboard').classList.add('hidden');
+            document.getElementById('hero-section').classList.add('hidden');
+            
+            const container = document.getElementById('course-track');
+            const title = document.getElementById('course-track-title');
+            const grid = document.getElementById('lessons-grid-box');
+            
+            const target = appDataset[courseId];
+            title.innerText = target.title;
+            grid.innerHTML = '';
+
+            target.lessons.forEach(l => {
+                grid.innerHTML += `
+                    <div class="course-card" onclick="loadLesson('${l.id}')">
+                        <div>
+                            <span class="course-badge">Interactive Lesson</span>
+                            <h3>${l.title}</h3>
+                            <p>Read content material and answer the lesson question dynamically.</p>
+                        </div>
+                        <button class="btn">Launch Lesson</button>
+                    </div>
+                `;
+            });
+            container.classList.remove('hidden');
         }
 
         function showDashboard() {
@@ -383,102 +475,52 @@
             document.getElementById('course-track').classList.remove('hidden');
         }
 
-        function loadLesson(lessonType) {
+        function loadLesson(lessonId) {
             document.getElementById('course-track').classList.add('hidden');
             const workspace = document.getElementById('lesson-workspace');
             const title = document.getElementById('lesson-title');
-            const content = document.getElementById('lesson-content');
+            const textBox = document.getElementById('lesson-text-box');
+            const quizContainer = document.getElementById('quiz-container');
             
-            workspace.style.display = 'block';
+            const course = appDataset[currentCourseId];
+            const lesson = course.lessons.find(l => l.id === lessonId);
 
-            if (lessonType === 'operations') {
-                title.innerText = "Order of Operations";
-                content.innerHTML = `
-                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
-                        Solve numerical steps in the correct standard priority sequence: Parentheses, Exponents, Multiplication & Division (left to right), Addition & Subtraction (left to right).
-                    </p>
-                    <div class="interactive-box">
-                        <h3>Interactive Question 1</h3>
-                        <p style="margin: 0.5rem 0 1rem;">What is the first step when evaluating the following expression?</p>
-                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">4 × (3 + 5) - 2</strong>
-                        
-                        <div class="quiz-option" onclick="checkAnswer(this, true, 'Correct! Parentheses always come first.')">A) Add 3 and 5 inside the parentheses</div>
-                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Parentheses hold the highest priority priority level.')">B) Multiply 4 by 3</div>
-                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Look for grouping symbols first.')">C) Subtract 2 from 5</div>
-                        <div class="feedback"></div>
-                    </div>
-
-                    <div class="interactive-box">
-                        <h3>Interactive Question 2</h3>
-                        <p style="margin: 0.5rem 0 1rem;">Evaluate the expression completely:</p>
-                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">12 - 3 × 2 + 4</strong>
-                        
-                        <input type="number" class="input-match" id="calc-ans" placeholder="Enter your numerical answer...">
-                        <button class="btn" style="margin-top: 0.5rem; display: block;" onclick="checkInputAnswer('calc-ans', 10)">Submit Answer</button>
-                        <div class="feedback" id="calc-feedback"></div>
-                    </div>
-                `;
-            } else if (lessonType === 'placevalue') {
-                title.innerText = "Place Value";
-                content.innerHTML = `
-                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
-                        Every position within a modern standard base-10 number holds ten times the mathematical weight of the column directly to its right.
-                    </p>
-                    <div class="interactive-box">
-                        <h3>Interactive Question 1</h3>
-                        <p style="margin: 0.5rem 0 1rem;">In the number below, what value slot does the digit <strong>7</strong> occupy?</p>
-                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">4,572.19</strong>
-                        
-                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Look closer at the whole number positions.')">A) Hundreds</div>
-                        <div class="quiz-option" onclick="checkAnswer(this, true, 'Correct! The 7 represents seven tens (70).')">B) Tens</div>
-                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Keep in mind it is located to the left of the decimal points.')">C) Tenths</div>
-                        <div class="feedback"></div>
-                    </div>
-
-                    <div class="interactive-box">
-                        <h3>Interactive Question 2</h3>
-                        <p style="margin: 0.5rem 0 1rem;">Type out the complete digit found exactly in the <strong>hundredths</strong> position column:</p>
-                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">0.835</strong>
-                        
-                        <input type="number" class="input-match" id="pv-ans" placeholder="Enter single digit...">
-                        <button class="btn" style="margin-top: 0.5rem; display: block;" onclick="checkInputAnswer('pv-ans', 3)">Submit Answer</button>
-                        <div class="feedback" id="pv-feedback"></div>
-                    </div>
-                `;
-            }
-        }
-
-        function checkAnswer(element, isCorrect, feedbackText) {
-            const parent = element.parentElement;
-            const options = parent.querySelectorAll('.quiz-option');
-            const feedback = parent.querySelector('.feedback');
+            title.innerText = lesson.title;
+            textBox.innerText = lesson.text;
             
-            options.forEach(opt => {
-                opt.classList.remove('correct', 'wrong');
+            let optionsHTML = '';
+            lesson.options.forEach((opt, idx) => {
+                optionsHTML += `<div class="quiz-option" onclick="evaluateAnswer(this, ${idx}, ${lesson.correctIndex})">${opt}</div>`;
             });
 
-            if (isCorrect) {
-                element.classList.add('correct');
-                feedback.style.color = 'var(--success)';
-            } else {
-                element.classList.add('wrong');
-                feedback.style.color = 'var(--error)';
-            }
-            
-            feedback.innerText = feedbackText;
-            feedback.style.display = 'block';
+            quizContainer.innerHTML = `
+                <div class="interactive-quiz">
+                    <div class="quiz-question">${lesson.question}</div>
+                    ${optionsHTML}
+                    <div class="feedback" id="quiz-feedback"></div>
+                </div>
+            `;
+
+            workspace.style.display = 'block';
         }
 
-        function checkInputAnswer(inputId, correctValue) {
-            const input = document.getElementById(inputId);
-            const feedback = input.parentElement.querySelector('.feedback');
+        function evaluateAnswer(element, chosenIdx, correctIdx) {
+            const parent = element.parentElement;
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = parent.querySelector('#quiz-feedback');
             
-            if (parseInt(input.value) === correctValue) {
-                feedback.style.color = 'var(--success)';
-                feedback.innerText = "Excellent structural breakdown! That is absolutely correct.";
+            options.forEach(opt => opt.classList.remove('correct', 'wrong'));
+
+            if (chosenIdx === correctIdx) {
+                element.classList.add('correct');
+                feedback.style.background = 'rgba(16, 185, 129, 0.1)';
+                feedback.style.color = '#34d399';
+                feedback.innerText = "Excellent! That is correct according to the lesson text.";
             } else {
-                feedback.style.color = 'var(--error)';
-                feedback.innerText = "Not quite right. Recheck your arithmetic/columns and submit again!";
+                element.classList.add('wrong');
+                feedback.style.background = 'rgba(239, 68, 68, 0.1)';
+                feedback.style.color = '#f87171';
+                feedback.innerText = "Incorrect. Review the text box above and select a different option.";
             }
             feedback.style.display = 'block';
         }
