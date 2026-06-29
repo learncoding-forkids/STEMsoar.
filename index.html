@@ -3,9 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEMsoar</title>
+    <title>STEMsoar | Interactive Learning</title>
+    <style>
+        :root {
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --primary: #38bdf8;
+            --primary-hover: #0ea5e9;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --success: #34d399;
+            --error: #f87171;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        header {
+            background-color: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #334155;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .hero {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 15%;
+            height: 70%;
+            width: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        /* Courses Grid */
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .course-card {
+            background-color: var(--bg-card);
+            border: 1px solid #334155;
+            border-radius: 12px;
+            padding: 2rem;
+            transition: transform 0.2s, border-color 0.2s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .course-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .course-badge {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            align-self: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .course-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .course-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: #0f172a;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-main);
+            border: 1px solid #475569;
+        }
+
+        .btn-secondary:hover {
+            background-color: #334155;
+        }
+
+        /* Workspace / Interactive Lesson Area */
+        .lesson-container {
+            background-color: var(--bg-card);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .lesson-header {
+            border-bottom: 1px solid #334155;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .interactive-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-option {
+            display: block;
+            background: #1e293b;
+            border: 1px solid #475569;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: #273549;
+        }
+
+        .quiz-option.correct {
+            border-color: var(--success);
+            background: rgba(52, 211, 153, 0.1);
+        }
+
+        .quiz-option.wrong {
+            border-color: var(--error);
+            background: rgba(248, 113, 113, 0.1);
+        }
+
+        .feedback {
+            margin-top: 1rem;
+            font-weight: 600;
+            display: none;
+        }
+
+        .input-match {
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: #fff;
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 300px;
+            margin-top: 0.5rem;
+        }
+
+        .input-match:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo" onclick="showDashboard()">STEM<span>soar</span></a>
+            <button class="btn btn-secondary" onclick="showDashboard()">Dashboard</button>
+        </div>
+    </header>
+
+    <section class="hero" id="hero-section">
+        <h1>Welcome to STEMsoar</h1>
+        <p>Dive into interactive, bite-sized STEM learning tracks designed to make complex concepts intuitive and fun.</p>
+    </section>
+
+    <main class="main-container">
+        <div id="dashboard">
+            <h2 class="section-title">Available Courses</h2>
+            <div class="courses-grid">
+                <div class="course-card" onclick="openCourse('math5')">
+                    <div>
+                        <span class="course-badge">Grade 5</span>
+                        <h3>Mathematics</h3>
+                        <p>Master core elements including Order of Operations and Place Value with hands-on modules.</p>
+                    </div>
+                    <button class="btn">Start Learning</button>
+                </div>
+
+                <div class="course-card">
+                    <div>
+                        <span class="course-badge">Grade 5</span>
+                        <h3>Introduction to Robotics</h3>
+                        <p>Explore basic logic controls and mechanisms powering modern automation.</p>
+                    </div>
+                    <button class="btn btn-secondary">Coming Soon</button>
+                </div>
+
+                <div class="course-card">
+                    <div>
+                        <span class="course-badge">Grade 6</span>
+                        <h3>Earth Science</h3>
+                        <p>Uncover the dynamic systems shaping our planet's atmosphere and terrain.</p>
+                    </div>
+                    <button class="btn btn-secondary">Coming Soon</button>
+                </div>
+
+                <div class="course-card">
+                    <div>
+                        <span class="course-badge">Grade 6</span>
+                        <h3>Foundations of Coding</h3>
+                        <p>Build visual and logical scripts using beginner-friendly development sandboxes.</p>
+                    </div>
+                    <button class="btn btn-secondary">Coming Soon</button>
+                </div>
+
+                <div class="course-card">
+                    <div>
+                        <span class="course-badge">Grade 7</span>
+                        <h3>Space Exploration</h3>
+                        <p>Journey through our solar system and look into the physics of interstellar travel.</p>
+                    </div>
+                    <button class="btn btn-secondary">Coming Soon</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="course-track" class="hidden">
+            <h2 class="section-title" id="course-track-title">Mathematics - Grade 5 Tracks</h2>
+            <div class="courses-grid">
+                <div class="course-card" onclick="loadLesson('operations')">
+                    <div>
+                        <span class="course-badge">Lesson 1</span>
+                        <h3>Order of Operations</h3>
+                        <p>Learn the proper rules to evaluate multi-step mathematical expressions effortlessly.</p>
+                    </div>
+                    <button class="btn">Launch Lesson</button>
+                </div>
+
+                <div class="course-card" onclick="loadLesson('placevalue')">
+                    <div>
+                        <span class="course-badge">Lesson 2</span>
+                        <h3>Place Value</h3>
+                        <p>Understand how positions change digits' values drastically from tenths to millions.</p>
+                    </div>
+                    <button class="btn">Launch Lesson</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="lesson-workspace" class="lesson-container">
+            <div class="lesson-header">
+                <h2 id="lesson-title">Lesson Title</h2>
+                <button class="btn btn-secondary" onclick="backToTrack()">Back to Track</button>
+            </div>
+            
+            <div id="lesson-content">
+                </div>
+        </div>
+    </main>
+
+    <script>
+        function openCourse(courseId) {
+            if (courseId === 'math5') {
+                document.getElementById('dashboard').classList.add('hidden');
+                document.getElementById('hero-section').classList.add('hidden');
+                document.getElementById('course-track').classList.remove('hidden');
+            }
+        }
+
+        function showDashboard() {
+            document.getElementById('dashboard').classList.remove('hidden');
+            document.getElementById('hero-section').classList.remove('hidden');
+            document.getElementById('course-track').classList.add('hidden');
+            document.getElementById('lesson-workspace').style.display = 'none';
+        }
+
+        function backToTrack() {
+            document.getElementById('lesson-workspace').style.display = 'none';
+            document.getElementById('course-track').classList.remove('hidden');
+        }
+
+        function loadLesson(lessonType) {
+            document.getElementById('course-track').classList.add('hidden');
+            const workspace = document.getElementById('lesson-workspace');
+            const title = document.getElementById('lesson-title');
+            const content = document.getElementById('lesson-content');
+            
+            workspace.style.display = 'block';
+
+            if (lessonType === 'operations') {
+                title.innerText = "Order of Operations";
+                content.innerHTML = `
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                        Solve numerical steps in the correct standard priority sequence: Parentheses, Exponents, Multiplication & Division (left to right), Addition & Subtraction (left to right).
+                    </p>
+                    <div class="interactive-box">
+                        <h3>Interactive Question 1</h3>
+                        <p style="margin: 0.5rem 0 1rem;">What is the first step when evaluating the following expression?</p>
+                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">4 × (3 + 5) - 2</strong>
+                        
+                        <div class="quiz-option" onclick="checkAnswer(this, true, 'Correct! Parentheses always come first.')">A) Add 3 and 5 inside the parentheses</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Parentheses hold the highest priority priority level.')">B) Multiply 4 by 3</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Look for grouping symbols first.')">C) Subtract 2 from 5</div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="interactive-box">
+                        <h3>Interactive Question 2</h3>
+                        <p style="margin: 0.5rem 0 1rem;">Evaluate the expression completely:</p>
+                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">12 - 3 × 2 + 4</strong>
+                        
+                        <input type="number" class="input-match" id="calc-ans" placeholder="Enter your numerical answer...">
+                        <button class="btn" style="margin-top: 0.5rem; display: block;" onclick="checkInputAnswer('calc-ans', 10)">Submit Answer</button>
+                        <div class="feedback" id="calc-feedback"></div>
+                    </div>
+                `;
+            } else if (lessonType === 'placevalue') {
+                title.innerText = "Place Value";
+                content.innerHTML = `
+                    <p style="margin-bottom: 1.5rem; color: var(--text-muted);">
+                        Every position within a modern standard base-10 number holds ten times the mathematical weight of the column directly to its right.
+                    </p>
+                    <div class="interactive-box">
+                        <h3>Interactive Question 1</h3>
+                        <p style="margin: 0.5rem 0 1rem;">In the number below, what value slot does the digit <strong>7</strong> occupy?</p>
+                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">4,572.19</strong>
+                        
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Look closer at the whole number positions.')">A) Hundreds</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, true, 'Correct! The 7 represents seven tens (70).')">B) Tens</div>
+                        <div class="quiz-option" onclick="checkAnswer(this, false, 'Try again. Keep in mind it is located to the left of the decimal points.')">C) Tenths</div>
+                        <div class="feedback"></div>
+                    </div>
+
+                    <div class="interactive-box">
+                        <h3>Interactive Question 2</h3>
+                        <p style="margin: 0.5rem 0 1rem;">Type out the complete digit found exactly in the <strong>hundredths</strong> position column:</p>
+                        <strong style="font-size: 1.3rem; display: block; margin-bottom: 1rem; color: var(--primary);">0.835</strong>
+                        
+                        <input type="number" class="input-match" id="pv-ans" placeholder="Enter single digit...">
+                        <button class="btn" style="margin-top: 0.5rem; display: block;" onclick="checkInputAnswer('pv-ans', 3)">Submit Answer</button>
+                        <div class="feedback" id="pv-feedback"></div>
+                    </div>
+                `;
+            }
+        }
+
+        function checkAnswer(element, isCorrect, feedbackText) {
+            const parent = element.parentElement;
+            const options = parent.querySelectorAll('.quiz-option');
+            const feedback = parent.querySelector('.feedback');
+            
+            options.forEach(opt => {
+                opt.classList.remove('correct', 'wrong');
+            });
+
+            if (isCorrect) {
+                element.classList.add('correct');
+                feedback.style.color = 'var(--success)';
+            } else {
+                element.classList.add('wrong');
+                feedback.style.color = 'var(--error)';
+            }
+            
+            feedback.innerText = feedbackText;
+            feedback.style.display = 'block';
+        }
+
+        function checkInputAnswer(inputId, correctValue) {
+            const input = document.getElementById(inputId);
+            const feedback = input.parentElement.querySelector('.feedback');
+            
+            if (parseInt(input.value) === correctValue) {
+                feedback.style.color = 'var(--success)';
+                feedback.innerText = "Excellent structural breakdown! That is absolutely correct.";
+            } else {
+                feedback.style.color = 'var(--error)';
+                feedback.innerText = "Not quite right. Recheck your arithmetic/columns and submit again!";
+            }
+            feedback.style.display = 'block';
+        }
+    </script>
 </body>
 </html>
