@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>STEMsoar | Online Lesson Portal</title>
+    <title>STEMsoar | Complete Lessons Workspace</title>
     <style>
         :root {
             --bg-dark: #0a0f1d;
@@ -28,43 +28,68 @@
             background-color: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            padding-bottom: 60px;
-        }
-
-        header {
-            background-color: rgba(10, 15, 29, 0.9);
-            backdrop-filter: blur(12px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .nav-container {
-            max-width: 900px;
-            margin: 0 auto;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 1.2rem 2rem;
+            min-height: 100vh;
         }
 
-        .logo {
-            font-size: 1.6rem;
+        /* Sidebar Navigation Layout */
+        aside {
+            width: 280px;
+            background-color: #0b1224;
+            border-right: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .sidebar-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            font-size: 1.3rem;
             font-weight: 800;
-            color: var(--text-main);
-            text-decoration: none;
             letter-spacing: -0.5px;
         }
 
-        .logo span {
+        .sidebar-header span {
             color: var(--primary);
         }
 
-        .main-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
+        .lesson-nav-list {
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        .nav-item {
+            padding: 0.8rem 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item:hover {
+            color: var(--text-main);
+            background: rgba(56, 189, 248, 0.05);
+        }
+
+        .nav-item.active {
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            border-left: 4px solid var(--primary);
+            padding-left: 1.25rem;
+        }
+
+        /* Learning Workspace Main Frame */
+        main {
+            margin-left: 280px;
+            flex-grow: 1;
+            padding: 2.5rem;
+            max-width: 1200px;
         }
 
         .workspace-container {
@@ -72,6 +97,7 @@
             border: 1px solid var(--border);
             border-radius: 16px;
             padding: 2.5rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
 
         .workspace-header {
@@ -168,147 +194,167 @@
 </head>
 <body>
 
-    <header>
-        <div class="nav-container">
-            <div class="logo">STEM<span>soar Portal</span></div>
-        </div>
-    </header>
+    <aside>
+        <div class="sidebar-header">STEM<span>soar Portal</span></div>
+        <ul class="lesson-nav-list" id="sidebar-nav">
+            </ul>
+    </aside>
 
-    <main class="main-container">
+    <main>
         <div class="workspace-container">
             <div class="workspace-header">
-                <h2 id="module-title">Lesson 5: Introduction to Conditionals</h2>
+                <h2 id="module-title">Select a Lesson</h2>
             </div>
             
             <div id="module-paragraphs" class="lesson-paragraphs">
-                <p>Now that we understand variables and how they store information, we are ready to learn a new concept, conditionals! Conditionals help computers decide what to do. Just like you make choices every day, computers do too, but they need clear rules to follow.</p>
-                <p>A conditional is like saying “If this happens, then do that.” For example, imagine you are outside and you feel raindrops. You might think: If it is snowing, then put on a jacket. You made a decision based on a condition!</p>
-                <p>Computers do the same thing, but they use code. In coding, a conditional might look like this: if score > 20: say “Nice!” This means: If the score is greater than 20, then the computer should say “Nice!” If the condition is not true, the computer will not do that action. So if the score is 19 it will not say “Nice!”.</p>
-                <p>Sometimes we also use the word else to tell the computer what to do if the condition is not met. For example: if it is raining: take an umbrella else: wear sunglasses. Conditionals help programs react dynamically to circumstances, whether in games, apps, or complex software architectures.</p>
+                <p>Please select a lesson from the sidebar menu navigation framework to begin.</p>
             </div>
             
-            <div class="quiz-box">
+            <div class="quiz-box" id="quiz-area" style="display: none;">
                 <div class="quiz-title">Knowledge Review Framework</div>
                 <div id="questions-wrapper">
-                    <div class="question-block" id="block-q-0">
-                        <div class="quiz-question">1. What do conditionals help computers do?</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 0, 1)">A. Draw pictures</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 1, 1)">B. Make decisions</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 2, 1)">C. Go to sleep</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 0, 3, 1)">D. Make music</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-0"></div>
                     </div>
-
-                    <div class="question-block" id="block-q-1">
-                        <div class="quiz-question">2. A conditional is like saying:</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 0, 1)">A. “Do everything at once.”</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 1, 1)">B. “If this happens, then do that.”</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 2, 1)">C. “Never change anything.”</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 1, 3, 1)">D. “Always repeat forever.”</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-1"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-2">
-                        <div class="quiz-question">3. True or False: You make decisions every day, just like computers do.</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 2, 0, 0)">A. True</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 2, 1, 0)">B. False</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-2"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-3">
-                        <div class="quiz-question">4. Which is an example of a conditional in real life?</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 0, 0)">A. If it’s raining, take an umbrella</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 1, 0)">B. Eat lunch</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 2, 0)">C. Jump up and down</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 3, 3, 0)">D. Say hello</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-3"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-4">
-                        <div class="quiz-question">5. In the code if score > 30: say “Fabulous!”, what must be true for the computer to say “Fabulous!”?</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 0, 2)">A. Score is less than 10</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 1, 2)">B. Score is exactly 30</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 2, 2)">C. Score is greater than 30</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 4, 3, 2)">D. Score is 30</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-4"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-5">
-                        <div class="quiz-question">6. If the score is 19 in the example context, what happens?</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 0, 1)">A. The computer says “Nice!”</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 1, 1)">B. The computer says nothing</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 2, 1)">C. The computer shuts down</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 5, 3, 1)">D. The score resets</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-5"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-6">
-                        <div class="quiz-question">7. The word else tells the computer:</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 0, 0)">A. What to do if the condition is not true</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 1, 0)">B. To restart the program</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 2, 0)">C. To change screen alignments</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 6, 3, 0)">D. To erase code assets</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-6"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-7">
-                        <div class="quiz-question">8. Based on the statement 'if it is raining: take an umbrella Else: wear sunglasses', what happens if it is not raining?</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 0, 1)">A. Take an umbrella</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 1, 1)">B. Wear sunglasses</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 2, 1)">C. Stand still</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 7, 3, 1)">D. Go inside</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-7"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-8">
-                        <div class="quiz-question">9. Where are conditionals used?</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 0, 2)">A. Only in video games</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 1, 2)">B. Only in robots</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 2, 2)">C. In games, robots, and apps</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 8, 3, 2)">D. Nowhere</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-8"></div>
-                    </div>
-
-                    <div class="question-block" id="block-q-9">
-                        <div class="quiz-question">10. Conditionals decide an output based on the ________.</div>
-                        <div class="quiz-options">
-                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 0, 1)">A. Time</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 1, 1)">B. Circumstance</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 2, 1)">C. Color</div>
-                            <div class="quiz-option" onclick="verifyAnswer(this, 9, 3, 1)">D. Shape</div>
-                        </div>
-                        <div class="feedback-msg" id="feed-q-9"></div>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
 
     <script>
-        function verifyAnswer(element, qIdx, chosenIdx, correctIdx) {
-            const block = document.getElementById(`block-q-${qIdx}`);
-            const options = block.querySelectorAll('.quiz-option');
-            const feedback = document.getElementById(`feed-q-${qIdx}`);
+        // Database storing the full text blocks and questions for all interactive modules
+        const courseDatabase = [
+            {
+                id: "lesson-1",
+                title: "Lesson 1: Introduction to Coding",
+                paragraphs: [
+                    "We will begin with basic block coding. Coding is giving a robot instructions for it to follow. In the world of coding, there are many “languages” to learn or different ways to write code. We will be focusing on block and python coding.",
+                    "Coding is providing detailed and formatted plans to a robot. This is the core idea of coding for all languages. Block coding consists of prepared sets of code. Each block has a unique purpose. When you structure the blocks correctly, the computer performs them in order, which is called a sequence.",
+                    "Sequence is essential for coding because one mistake in the order or using an incorrect block can result in an error. Coding is used to solve problems. When you make a mistake while solving a problem in coding you need to fix it.",
+                    "Fixing mistakes in code is called debugging. Debugging is necessary for coding because mistakes prevent programs from working successfully."
+                ],
+                questions: [
+                    { q: "Do all blocks in block coding have the same purpose?", o: ["Yes", "No"], c: 1 },
+                    { q: "What is it called when a computer performs blocks in order?", o: ["Sequence", "Order", "Method", "Pathway"], c: 0 },
+                    { q: "What is coding used for?", o: ["Solve problems", "Social media", "Make websites", "All of the above"], c: 3 },
+                    { q: "What is debugging?", o: ["Fixing mistakes", "Finalizing an idea"], c: 0 }
+                ]
+            },
+            {
+                id: "lesson-2",
+                title: "Lesson 2: Block Coding Elements",
+                paragraphs: [
+                    "In coding there are a multitude of different functions that do different tasks. In coding, we use these functions to create solutions to various things. The fundamental functions in block coding are conditionals, and loops.",
+                    "To make these functions you first require a variable which is a piece of code that stores data. This data can be altered with preset code or inputs. Inputs are coding lines that require a non-pregenerated response. They take data from and respond to someone or something giving it.",
+                    "With inputs, there must be an output. Without an output the input has no purpose. Depending on the input the output can vary. This means that inputs and outputs are always linked together.",
+                    "Conditionals are used to make decisions based on a condition. A loop is used to repeat a set of instructions multiple times. All parts of block coding work together to solve problems."
+                ],
+                questions: [
+                    { q: "Inputs allow the code to do what?", o: ["Erase items", "Receive information", "Replace backgrounds", "Slow down systems"], c: 1 },
+                    { q: "What must always be paired with an input?", o: ["A color code", "An extra computer", "An output", "A password"], c: 2 },
+                    { q: "What is an output?", o: ["A random sound", "The action or result that happens after an input", "A broken part of code", "A type of robot"], c: 1 },
+                    { q: "What are conditionals used for in block coding?", o: ["To repeat code over and over", "To make decisions based on a condition", "To erase variables", "To decorate the screen"], c: 1 },
+                    { q: "What is a loop used for?", o: ["To stop the program", "To repeat a set of instructions multiple times", "To change colors", "To delete outputs"], c: 1 }
+                ]
+            },
+            {
+                id: "lesson-3",
+                title: "Lesson 3: Introduction to Variables",
+                paragraphs: [
+                    "Think of variables as a special box that holds information. Now imagine the box has a label. The label tells you what the box is for, and inside the box you can put different things.",
+                    "For example, imagine you have a box labeled 'Favorite food'. One day, you might put chocolate in the box. Another day, you might change it to a banana.",
+                    "The box stays the same, but what is inside it can change. That is exactly how variables work! They help computers remember information that can change.",
+                    "Variables are super useful when coding because they let us store numbers, words, or answers. If we are making a game, we might use a variable to keep track of a score."
+                ],
+                questions: [
+                    { q: "If your variable is labeled 'Favorite Food', can you change what is inside it?", o: ["No", "Yes"], c: 1 },
+                    { q: "Fill in the blank: Variables help computers ______ information.", o: ["Eat", "Hide", "Remember"], c: 2 },
+                    { q: "In a video game, what might a variable be used to keep track of?", o: ["The player’s score", "The number of buttons", "The color of the sky"], c: 0 },
+                    { q: "What changes when you update a variable?", o: ["The box disappears", "The label changes", "Only the information changes"], c: 2 }
+                ]
+            },
+            {
+                id: "lesson-4",
+                title: "Lesson 4: How Variables Work",
+                paragraphs: [
+                    "Imagine you have three boxes: One labeled Snacks, One labeled Toys, One labeled Art Supplies. Because of the labels, you know what belongs in each box. If you want to find your crayons, you look in the Art Supplies box.",
+                    "The label guides you. Variables work just like that. The name of the variable tells the computer what kind of information we are storing. Inside each box, the objects can be changed.",
+                    "The box remains the same, but the contents change. This is exactly what happens with variables. The value inside the variable can be changed anytime we want, helping the computer remember information throughout the program.",
+                    "Without variables, the computer would forget everything as soon as it happened. Variables act like the computer’s memory helpers to maintain dynamic states."
+                ],
+                questions: [
+                    { q: "What does the label on the box (variable name) tell us?", o: ["How heavy it is", "What should go inside", "Who owns it", "How old it is"], c: 1 },
+                    { q: "What can change in a variable?", o: ["The label", "The size of the box", "The contents inside the box", "The color of the box"], c: 2 },
+                    { q: "Why are variables important in coding?", o: ["They help remember information", "They make it faster", "They prevent sleep", "They make things colorful"], c: 0 }
+                ]
+            },
+            {
+                id: "lesson-5",
+                title: "Lesson 5: Introduction to Conditionals",
+                paragraphs: [
+                    "Conditionals help computers decide what to do. Just like you make choices every day, computers do too, but they need clear rules to follow. A conditional is like saying “If this happens, then do that.”",
+                    "For example, imagine you are outside and you feel raindrops. You might think: If it is snowing, then put on a jacket. You made a decision based on a condition! Computers do the same thing using code.",
+                    "In coding, a conditional might look like this: if score > 20: say “Nice!” This means: If the score is greater than 20, then the computer should say “Nice!” If the condition is not true, it will not perform the action.",
+                    "Sometimes we use the word else to tell the computer what to do if the condition is not met. For example: if it is raining: take an umbrella else: wear sunglasses. Conditionals help programs react dynamically."
+                ],
+                questions: [
+                    { q: "What do conditionals help computers do?", o: ["Draw pictures", "Make decisions", "Go to sleep", "Make music"], c: 1 },
+                    { q: "A conditional is like saying:", o: ["“Do everything at once.”", "“If this happens, then do that.”", "“Never change anything.”", "“Always repeat forever.”"], c: 1 },
+                    { q: "In the code if score > 30: say “Fabulous!”, when will it trigger?", o: ["Score is less than 10", "Score is exactly 30", "Score is greater than 30", "Score is 30"], c: 2 },
+                    { q: "The word else tells the computer:", o: ["What to do if the condition is false", "To restart", "To alignment properties", "To erase layout assets"], c: 0 }
+                ]
+            }
+        ];
+
+        // Renders sidebar items immediately on load execution
+        function initSidebar() {
+            const navWrapper = document.getElementById('sidebar-nav');
+            navWrapper.innerHTML = '';
+            courseDatabase.forEach((lesson, index) => {
+                navWrapper.innerHTML += `
+                    <li class="nav-item" id="nav-${lesson.id}" onclick="selectLesson(${index})">
+                        ${lesson.title}
+                    </li>
+                `;
+            });
+        }
+
+        // Switches displayed text metrics and generates matching quiz arrays dynamically
+        function selectLesson(index) {
+            // Update Navigation active design classes
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            const activeLesson = courseDatabase[index];
+            document.getElementById(`nav-${activeLesson.id}`).classList.add('active');
+
+            // Set Header and Paragraph panels
+            document.getElementById('module-title').innerText = activeLesson.title;
+            const paragraphsBox = document.getElementById('module-paragraphs');
+            paragraphsBox.innerHTML = activeLesson.paragraphs.map(p => `<p>${p}</p>`).join('');
+
+            // Build Evaluation Quiz Matrix
+            const wrapper = document.getElementById('questions-wrapper');
+            wrapper.innerHTML = '';
             
-            // Clear prior states inside this individual question block
+            activeLesson.questions.forEach((qObj, qIdx) => {
+                let optionsHTML = qObj.o.map((opt, oIdx) => `
+                    <div class="quiz-option" onclick="verifyAnswer(this, ${qIdx}, ${oIdx}, ${qObj.c})">${opt}</div>
+                `).join('');
+
+                wrapper.innerHTML += `
+                    <div class="question-block" id="block-q-${qIdx}">
+                        <div class="quiz-question">${qIdx + 1}. ${qObj.q}</div>
+                        <div class="quiz-options">${optionsHTML}</div>
+                        <div class="feedback-msg" id="feed-q-${qIdx}"></div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('quiz-area').style.display = 'block';
+        }
+
+        // Context grading function checks chosen indexes vs correct parameters
+        function verifyAnswer(element, qIdx, chosenIdx, correctIdx) {
+            const block = element.closest('.question-block');
+            const options = block.querySelectorAll('.quiz-option');
+            const feedback = block.querySelector('.feedback-msg');
+            
             options.forEach(opt => opt.classList.remove('correct', 'wrong'));
 
             if (chosenIdx === correctIdx) {
@@ -322,6 +368,10 @@
             }
             feedback.style.display = 'block';
         }
+
+        // Initialize execution on runtime launch
+        initSidebar();
+        selectLesson(0); // Auto-load first module instantly
     </script>
 </body>
 </html>
